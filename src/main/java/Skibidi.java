@@ -4,24 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Skibidi {
-    public static String toAlternateCaps(String input) {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            if (i % 2 == 0) {
-                result.append(Character.toUpperCase(c));
-            } else {
-                result.append(Character.toLowerCase(c));
-            }
-        }
-        return result.toString();
-    }
 
     private static List<Task> tasks = new ArrayList<>();
 
-    public static void addTask(String taskDescription) {
-        tasks.add(new Task(taskDescription));
+    public static void addTask(Task task) {
+        tasks.add(task);
     }
 
     public static void listTasks() {
@@ -30,16 +17,36 @@ public class Skibidi {
         } else {
             System.out.println("Here are the tasks in your list:");
             for (int i = 0; i < tasks.size(); i++) {
-                if (tasks.get(i).isDone) {
-                    System.out.println((i + 1) + ". " +"[X] " + tasks.get(i).getDescription());
-                } else {
-                    System.out.println((i + 1) + ". " +"[ ] " + tasks.get(i).getDescription());
-                }
+                System.out.println(i+1 +"." + tasks.get(i).toString());
             }
         }
     }
     public static void main(String[] args) {
         String name = "Skibidi";
+        System.out.println(
+                " ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣴⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⣰⣾⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⢠⡿⠋⠉⠉⠛⠛⠛⠋⠉⠙⢿⡆⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣧⠀⠀⠀⠀⠀⠀\n" +
+                        "⡰⠉⠉⠁⠉⡙⠹⢠⢾⣛⠛⢶⢀⡶⠛⣛⠳⡄⡏⢋⠉⠉⠉⠉⢢\n" +
+                        "⢹⠶⠶⠶⣾⠡⣾⠈⠸⡿⠷⠀⠀⠀⢾⣿⠇⠁⡶⡌⢷⠶⠶⠶⡏\n" +
+                        "⢸⠀⠀⠀⠆⠀⢻⡀⠀⠀⡀⠀⠀⠀⢀⢀⡀⠀⡟⠀⠸⡀⠀⠀⡇\n" +
+                        "⢸⠀⠀⢸⠀⠀⠈⡇⣠⠒⠓⠤⣀⠤⠘⠀⡘⢰⠃⠀⠀⡇⠀⠀⡇\n" +
+                        "⢸⠀⠀⡎⠀⠀⠀⢻⠀⠙⣶⣶⣒⣶⣶⠋⢀⡏⠀⠀⠀⢸⠀⠀⡇\n" +
+                        "⢸⠀⠀⡇⠀⠀⠀⠘⣧⡀⠈⠿⣿⡿⠁⢀⢮⠃⠀⠀⠀⢸⠀⠀⡇\n" +
+                        "⢸⠀⠀⡇⠀⠀⠀⠀⢰⠑⠄⣀⠀⢀⡠⠊⡌⠀⠀⠀⠀⢸⠀⠀⡇\n" +
+                        "⢸⠀⠀⠘⢄⠀⠀⠀⠀⠆⠀⠀⠀⠀⠀⠰⠀⠀⠀⠀⡠⠃⠀⠀⡇\n" +
+                        "⠈⠦⣀⣔⠂⠋⠒⠲⠶⠾⠤⠤⠤⠤⠤⠷⠶⠖⠒⠉⠒⢢⣀⠴⠃\n" +
+                        "⠀⠀⠀⠅⠉⠉⠉⠉⠉⠒⠒⠒⠒⠒⠒⠊⠉⠉⠉⠉⠉⠨⡀⠀⠀\n" +
+                        "⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠁⠀⠀\n" +
+                        "⠀⠀⠀⠳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠎⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠈⠢⢄⣀⡀⢀⠀⡀⢀⠀⣀⣀⡠⠔⠁⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠀⡌⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡀⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
+                        "⠀⠀⠀⠀⠀⠀⠸⠤⠠⠀⢀⣀⣀⣀⠀⠀⠤⠤⠖⠀⠀⠀⠀⠀⠀⠀"
+        );
         System.out.println("Ohio skibidi on the wall, who's the skibidiest of 'em all?!! " +
                 "\nHello! I'm " + name + " the skibidiest of 'em all"+ " \nWhat can I do for you?");
 
@@ -58,7 +65,7 @@ public class Skibidi {
                     if (taskNumber > 0 && taskNumber <= tasks.size()) {
                         tasks.get(taskNumber - 1).markAsDone();
                         System.out.println("Nice! I've marked this task as done:");
-                        System.out.println("[X] " + tasks.get(taskNumber - 1).getDescription());
+                        System.out.println(tasks.get(taskNumber - 1).toString());
                     } else {
                         System.out.println("Error: Task number " + taskNumber + " is out of bounds.");
                     }
@@ -73,17 +80,45 @@ public class Skibidi {
                     if (taskNumber > 0 && taskNumber <= tasks.size()) {
                         tasks.get(taskNumber - 1).markAsNotDone();
                         System.out.println("Ok, I've marked this task as not done yet:");
-                        System.out.println("[ ] " + tasks.get(taskNumber - 1).getDescription());
+                        System.out.println(tasks.get(taskNumber - 1).toString());
                     } else {
                         System.out.println("Error: Task number " + taskNumber + " is out of bounds.");
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Error: Task number must be an integer.");
                 }
+            } else if (input.startsWith("todo")) {
+                Task task = new Todo(input.substring(5).trim());
+                addTask(task);
+                System.out.println("Got it. I've added this task:");
+                System.out.println(task.toString());
+                System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+
+            } else if (input.startsWith("deadline")) {
+                String[] words = input.split(" /by ");
+                if (words.length < 2) {
+                    System.out.println("Error: Deadline description must include a deadline.");
+                } else {
+                    Task task = new Deadline(words[0].substring(9).trim(), words[1]);
+                    addTask(task);
+                    System.out.println("Got it. I've added this task:");
+                    System.out.println(task.toString());
+                    System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+                }
+            } else if (input.startsWith("event")) {
+                String[] words = input.split(" /from | /to ");
+                if (words.length < 2) {
+                    System.out.println("Error: Event description must include both start and end times.");
+                } else {
+                    Task task = new Event(words[0].substring(6).trim(), words[1], words[2]);
+                    addTask(task);
+                    System.out.println("Got it. I've added this task:");
+                    System.out.println(task.toString());
+                    System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+                }
+
             } else {
-                Task task = new Task(input);
-                addTask(task.getDescription());
-                System.out.println("added: " + toAlternateCaps(input));
+                System.out.println("I'm sorry, but I don't know what that means :-(");
             }
         }
         scanner.close();
