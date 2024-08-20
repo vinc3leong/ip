@@ -15,7 +15,6 @@ public class Skibidi {
                 result.append(Character.toLowerCase(c));
             }
         }
-
         return result.toString();
     }
 
@@ -29,9 +28,13 @@ public class Skibidi {
         if (tasks.isEmpty()) {
             System.out.println("No tasks available.");
         } else {
-            System.out.println("Tasks:");
+            System.out.println("Here are the tasks in your list:");
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
+                if (tasks.get(i).isDone) {
+                    System.out.println((i + 1) + ". " +"[X] " + tasks.get(i).getDescription());
+                } else {
+                    System.out.println((i + 1) + ". " +"[ ] " + tasks.get(i).getDescription());
+                }
             }
         }
     }
@@ -48,10 +51,39 @@ public class Skibidi {
                 break;
             } else if (Objects.equals(input.trim(), "list")) {
                 listTasks();
+            } else if (input.startsWith("mark")) {
+                String[] words = input.split(" ");
+                try {
+                    int taskNumber = Integer.parseInt(words[1]);
+                    if (taskNumber > 0 && taskNumber <= tasks.size()) {
+                        tasks.get(taskNumber - 1).markAsDone();
+                        System.out.println("Nice! I've marked this task as done:");
+                        System.out.println("[X] " + tasks.get(taskNumber - 1).getDescription());
+                    } else {
+                        System.out.println("Error: Task number " + taskNumber + " is out of bounds.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Error: Task number must be an integer.");
+                }
+
+            } else if (input.startsWith("unmark")) {
+                String[] words = input.split(" ");
+                try {
+                    int taskNumber = Integer.parseInt(words[1]);
+                    if (taskNumber > 0 && taskNumber <= tasks.size()) {
+                        tasks.get(taskNumber - 1).markAsNotDone();
+                        System.out.println("Ok, I've marked this task as not done yet:");
+                        System.out.println("[ ] " + tasks.get(taskNumber - 1).getDescription());
+                    } else {
+                        System.out.println("Error: Task number " + taskNumber + " is out of bounds.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Error: Task number must be an integer.");
+                }
             } else {
                 Task task = new Task(input);
                 addTask(task.getDescription());
-                System.out.println("added:" + toAlternateCaps(input));
+                System.out.println("added: " + toAlternateCaps(input));
             }
         }
         scanner.close();
