@@ -23,32 +23,9 @@ public class Skibidi {
     }
     public static void main(String[] args) {
         String name = "Skibidi";
-        System.out.println(
-                " ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣴⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠀⠀⣰⣾⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠀⢠⡿⠋⠉⠉⠛⠛⠛⠋⠉⠙⢿⡆⠀⠀⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣧⠀⠀⠀⠀⠀⠀\n" +
-                        "⡰⠉⠉⠁⠉⡙⠹⢠⢾⣛⠛⢶⢀⡶⠛⣛⠳⡄⡏⢋⠉⠉⠉⠉⢢\n" +
-                        "⢹⠶⠶⠶⣾⠡⣾⠈⠸⡿⠷⠀⠀⠀⢾⣿⠇⠁⡶⡌⢷⠶⠶⠶⡏\n" +
-                        "⢸⠀⠀⠀⠆⠀⢻⡀⠀⠀⡀⠀⠀⠀⢀⢀⡀⠀⡟⠀⠸⡀⠀⠀⡇\n" +
-                        "⢸⠀⠀⢸⠀⠀⠈⡇⣠⠒⠓⠤⣀⠤⠘⠀⡘⢰⠃⠀⠀⡇⠀⠀⡇\n" +
-                        "⢸⠀⠀⡎⠀⠀⠀⢻⠀⠙⣶⣶⣒⣶⣶⠋⢀⡏⠀⠀⠀⢸⠀⠀⡇\n" +
-                        "⢸⠀⠀⡇⠀⠀⠀⠘⣧⡀⠈⠿⣿⡿⠁⢀⢮⠃⠀⠀⠀⢸⠀⠀⡇\n" +
-                        "⢸⠀⠀⡇⠀⠀⠀⠀⢰⠑⠄⣀⠀⢀⡠⠊⡌⠀⠀⠀⠀⢸⠀⠀⡇\n" +
-                        "⢸⠀⠀⠘⢄⠀⠀⠀⠀⠆⠀⠀⠀⠀⠀⠰⠀⠀⠀⠀⡠⠃⠀⠀⡇\n" +
-                        "⠈⠦⣀⣔⠂⠋⠒⠲⠶⠾⠤⠤⠤⠤⠤⠷⠶⠖⠒⠉⠒⢢⣀⠴⠃\n" +
-                        "⠀⠀⠀⠅⠉⠉⠉⠉⠉⠒⠒⠒⠒⠒⠒⠊⠉⠉⠉⠉⠉⠨⡀⠀⠀\n" +
-                        "⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠁⠀⠀\n" +
-                        "⠀⠀⠀⠳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠎⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠈⠢⢄⣀⡀⢀⠀⡀⢀⠀⣀⣀⡠⠔⠁⠀⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠀⠀⡌⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠀⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡀⠀⠀⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀\n" +
-                        "⠀⠀⠀⠀⠀⠀⠸⠤⠠⠀⢀⣀⣀⣀⠀⠀⠤⠤⠖⠀⠀⠀⠀⠀⠀⠀"
-        );
-        System.out.println("Ohio skibidi on the wall, who's the skibidiest of 'em all?!! " +
-                "\nHello! I'm " + name + " the skibidiest of 'em all"+ " \nWhat can I do for you?");
+
+        System.out.println("Ohio skibidi on the wall, who's the skibidiest of 'em all?!!" +
+                "\nHello! I'm " + name + " the skibidiest of 'em all" + "\nWhat can I do for you?");
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
