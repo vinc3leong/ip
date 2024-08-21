@@ -64,6 +64,26 @@ public class Skibidi {
         }
     }
 
+    public static void deleteTask(String[] words) {
+        if (words.length != 2) {
+            System.out.println("Error: Delete command must be followed by a task number. \nTo delete a task, use the format: delete <task number>");
+            return;
+        }
+        try {
+            int taskNumber = Integer.parseInt(words[1]);
+            if (taskNumber > 0 && taskNumber <= tasks.size()) {
+                Task task = tasks.remove(taskNumber - 1);
+                System.out.println("Ok, I've removed this task:");
+                System.out.println(task.toString());
+                System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            } else {
+                System.out.println("Error: Task number " + taskNumber + " is out of bounds.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Task number must be an integer.");
+        }
+    }
+
     public static void main(String[] args) throws SkibidiException {
         String name = "Skibidi";
 
@@ -112,6 +132,9 @@ public class Skibidi {
                     Task task = new Event(words[0].substring(6).trim(), words[1], words[2]);
                     addTask(task);
 
+                } else if (input.startsWith("delete")) {
+                    String[] words = input.split(" ");
+                    deleteTask(words);
                 } else {
                     System.out.println("I'm sorry, but I don't know what that means :-(");
                 }
