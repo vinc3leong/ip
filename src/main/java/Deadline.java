@@ -1,17 +1,16 @@
+
 public class Deadline extends Task {
     protected String by;
+    private MilitaryTime time;
 
-    public Deadline(String description, String by) {
+    public Deadline(String description, String by, MilitaryTime time) {
         super(description);
         this.by = by;
-    }
-
-    public String getBy() {
-        return by;
+        this.time = time;
     }
 
     @Override
     public String toString() {
-        return " [D]" + super.toString() + " (by: " + by + ")";
+        return " [D]" + super.toString() + " (by: " + by + " " + time.toString() + ")";
     }
 }

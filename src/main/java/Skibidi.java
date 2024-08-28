@@ -1,3 +1,4 @@
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -6,6 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Skibidi {
 
@@ -135,29 +139,63 @@ public class Skibidi {
                     addTask(task);
 
                 } else if (input.startsWith("deadline")) {
-                    if (input.length() < 9) {
+                    if (!input.contains(" /by ")) {
                         throw new SkibidiException("Error: Deadline description must include a deadline. " +
-                                "\nTo add a deadline task, use the format: deadline <description> /by <deadline>");
+                                "\nTo add a deadline task, use the format: deadline <description> /by <date> <time>" +
+                                " where <date> is in the format yyyy-mm-dd and <time> is in the format HHmm");
                     }
                     String[] words = input.split(" /by ");
-                    if (words.length < 2) {
+                    String[] dateTime = words[1].split(" ");
+                    if (words.length != 2 || dateTime.length != 2) {
                         throw new SkibidiException("To add a deadline task, use the format: " +
-                                "deadline <description> /by <deadline>");
-                    } else {
-                        Task task = new Deadline(words[0].substring(9).trim(), words[1]);
+                                "deadline <description> /by <date> <time> where <date> is in the format yyyy-mm-dd " +
+                                "and <time> is in the format HHmm");
+                    }
+                    try {
+                        LocalDate deadline = LocalDate.parse(dateTime[0]);
+                        String formattedDeadline = deadline.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                        MilitaryTime time = new MilitaryTime(dateTime[1]);
+
+                        Task task = new Deadline(words[0].substring(9).trim(), formattedDeadline, time);
                         addTask(task);
 
+                    } catch (DateTimeParseException e) {
+                        throw new SkibidiException("Error: Deadline must be a valid date in the format yyyy-mm-dd");
                     }
                 } else if (input.startsWith("event")) {
                     if (!input.contains(" /from ") || !input.contains(" /to ")) {
                         throw new SkibidiException("Error: Event description must include both start and end times. " +
                                 "\nTo add an event task, use the format: " +
-                                "event <description> /from <start time> /to <end time>");
+                                "event <description> /from <start date> <start time> /to <end date> <end time> " +
+                                "\nwhere <start date> and <end date> is in the format yyyy-mm-dd and " +
+                                "<start time> and <end time> is in the format HHmm " );
                     }
-                    String[] words = input.split(" /from | /to ");
-                    Task task = new Event(words[0].substring(6).trim(), words[1], words[2]);
-                    addTask(task);
 
+                    String[] words = input.split(" /from | /to ");
+                    String[] fromDateTime = words[1].split(" ");
+                    String[] toDateTime = words[2].split(" ");
+                    if (words.length != 3 || fromDateTime.length != 2 || toDateTime.length != 2) {
+                        throw new SkibidiException("To add an event task, use the format: " +
+                                "event <description> /from <start date> <start time> /to <end date> <end time> " +
+                                "where <start date> and <end date> is in the format yyyy-mm-dd and " +
+                                "<start time> and <end time> is in the format HHmm " );
+                    }
+                    try {
+                        LocalDate from = LocalDate.parse(fromDateTime[0]);
+                        LocalDate to = LocalDate.parse(toDateTime[0]);
+                        String formattedFrom = from.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                        String formattedTo = to.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                        MilitaryTime startTime = new MilitaryTime(fromDateTime[1]);
+                        MilitaryTime endTime = new MilitaryTime(toDateTime[1]);
+
+                        Task task = new Event(words[0].substring(6).trim(), formattedFrom, startTime,
+                                formattedTo, endTime);
+                        addTask(task);
+
+                    } catch (DateTimeParseException e) {
+                        throw new SkibidiException("Error: Event start and end times must be in the format yyyy-mm-dd");
+                    }
                 } else if (input.startsWith("delete")) {
                     String[] words = input.split(" ");
                     deleteTask(words);
