@@ -1,3 +1,5 @@
+package Skibidi;
+
 public class MilitaryTime {
     protected String time;
     public MilitaryTime(String time) throws SkibidiException {
