@@ -17,4 +17,9 @@ public class Event extends Task {
         return " [E]" + super.toString() + " (from: " + from + " " + startTime.toString() +
                 " to: " + to + " " + endTime.toString() + ")";
     }
+
+    @Override
+    public String writeToFile() {
+        return "E | " + super.writeToFile() + " | " + from + " | " + startTime.toString() + " | " + to + " | " + endTime.toString();
+    }
 }

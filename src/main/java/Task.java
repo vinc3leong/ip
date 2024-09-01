@@ -35,4 +35,12 @@ public class Task {
             return "[ ] " + toAlternateCaps(description);
         }
     }
+
+    public String writeToFile() {
+        if (isDone) {
+            return "1 | " + description;
+        } else {
+            return "0 | " + description;
+        }
+    }
 }
