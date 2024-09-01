@@ -1,22 +1,6 @@
-1 [T][X] EaT
-2 [E][ ] PlAy (from: this to: that)
-3 [D][X] FiGhT (by: tomorrow)
-1 [T][ ] ReAd
-1 [T][ ] ReAd
-2 [T][ ] SlEeP
-1 [D][ ] ReAd (by: Dec 01 2019)
-1 [D][ ] ReAd (by: 2020-08-287:00 PM)
-1 [D][ ] ReAd (by: 2024-12-08 7:00 PM)
-1 [D][ ] ReAd (by: 2024-12-08 7:00 PM)
-2 [E][ ] SlEeP (from: 2024-08-28 5:30 PM to: 2025-08-28 5:20 PM)
-1 [D][X] ReAd (by: 2024-12-08 7:00 PM)
-2 [E][ ] SlEeP (from: 2024-08-28 5:30 PM to: 2025-08-28 5:20 PM)
-1 [D][ ] ReAd (by: 2024-12-08 7:00 PM)
-2 [E][ ] SlEeP (from: 2024-08-28 5:30 PM to: 2025-08-28 5:20 PM)
-1 [D][ ] ReAd (by: 2024-12-08 7:00 PM)
-2 [E][ ] SlEeP (from: 2024-08-28 5:30 PM to: 2025-08-28 5:20 PM)
-1 [D][ ] ReAd (by: 2024-12-08 7:00 PM)
-2 [E][ ] SlEeP (from: 2024-08-28 5:30 PM to: 2025-08-28 5:20 PM)
-1 [D][ ] ReAd (by: 2024-12-08 7:00 PM)
-1 [D][ ] ReAd (by: 2024-08-28 7:00 PM)
-1 [D][X] ReAd (by: 2024-08-28 7:00 PM)
+T | 0 | read
+T | 0 | sleep
+T | 0 | play
+T | 0 | eat rice
+D | 0 | description | 2022-12-23 | 5:00 PM
+D | 0 | smtg | Dec 23 2022 | 5:00 PM
