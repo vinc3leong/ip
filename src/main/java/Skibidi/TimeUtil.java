@@ -1,3 +1,5 @@
+package Skibidi;
+
 public class TimeUtil {
     public static String convertStandardToMilitary(String standardTime) {
         String[] parts = standardTime.split(" ");

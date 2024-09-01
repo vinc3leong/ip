@@ -1,6 +1,6 @@
+package Skibidi;
+
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

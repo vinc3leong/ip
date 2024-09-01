@@ -1,3 +1,5 @@
+package Skibidi;
+
 import java.util.Scanner;
 
 public class Ui {

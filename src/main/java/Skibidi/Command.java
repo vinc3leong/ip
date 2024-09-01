@@ -1,3 +1,5 @@
+package Skibidi;
+
 import java.io.IOException;
 
 abstract class Command {
