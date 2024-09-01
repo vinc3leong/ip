@@ -1,5 +1,8 @@
 package skibidi;
 
+/**
+ * Represents a task in the task list.
+ */
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -16,7 +19,13 @@ public class Task {
         isDone = false;
     }
 
-    public static String toAlternateCaps(String input) {
+    /**
+     * Converts even-indexed letters of each word in the input string to alternate caps.
+     *
+     * @param input The input string to be converted.
+     * @return The input string with the even-indexed letters of each word in alternate caps.
+     */
+    public String toAlternateCaps(String input) {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < input.length(); i++) {
@@ -29,6 +38,7 @@ public class Task {
         }
         return result.toString();
     }
+
     @Override
     public String toString() {
         if (isDone) {

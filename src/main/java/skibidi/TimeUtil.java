@@ -1,5 +1,8 @@
 package skibidi;
 
+/**
+ * Represents a utility class for converting time between standard and military time.
+ */
 public class TimeUtil {
     public static String convertStandardToMilitary(String standardTime) {
         String[] parts = standardTime.split(" ");

@@ -1,6 +1,17 @@
 package skibidi;
 
+/**
+ * Represents a parser.
+ */
 public class Parser {
+
+    /**
+     * Parses the input and returns the corresponding command.
+     *
+     * @param input The input to be parsed.
+     * @return The corresponding command.
+     * @throws SkibidiException If the input is invalid.
+     */
     public static Command parse(String input) throws SkibidiException {
         String[] words = input.split(" ");
         String command = words[0];
@@ -26,8 +37,13 @@ public class Parser {
         }
     }
 
-
-
+    /**
+     * Parses the task and returns the corresponding task.
+     *
+     * @param task The task to be parsed.
+     * @return The corresponding task.
+     * @throws SkibidiException If the task is invalid.
+     */
     public static Task parseTask(String task) throws SkibidiException {
         String[] words = task.split(" \\| ");
         String taskType = words[0];

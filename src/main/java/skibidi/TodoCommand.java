@@ -15,7 +15,7 @@ public class TodoCommand extends Command {
         }
     }
 
-    public String everythingAfterCommand(String[] input) {
+    private String everythingAfterCommand(String[] input) {
         StringBuilder description = new StringBuilder();
         for (int i = 1; i < input.length; i++) {
             description.append(input[i]).append(" ");
