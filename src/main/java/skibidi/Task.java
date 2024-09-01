@@ -1,4 +1,4 @@
-package Skibidi;
+package skibidi;
 
 public class Task {
     protected String description;

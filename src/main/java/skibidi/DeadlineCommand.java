@@ -1,4 +1,4 @@
-package Skibidi;
+package skibidi;
 
 import java.io.IOException;
 import java.time.LocalDate;

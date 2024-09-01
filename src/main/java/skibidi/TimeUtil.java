@@ -1,4 +1,4 @@
-package Skibidi;
+package skibidi;
 
 public class TimeUtil {
     public static String convertStandardToMilitary(String standardTime) {

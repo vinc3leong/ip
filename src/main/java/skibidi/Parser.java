@@ -1,4 +1,4 @@
-package Skibidi;
+package skibidi;
 
 public class Parser {
     public static Command parse(String input) throws SkibidiException {
