@@ -1,4 +1,4 @@
-package Skibidi;
+package skibidi;
 
 import java.time.format.DateTimeParseException;
 import java.io.FileNotFoundException;

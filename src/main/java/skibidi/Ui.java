@@ -1,4 +1,4 @@
-package Skibidi;
+package skibidi;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ public class Ui {
     public Ui() {
     }
     public static void printWelcomeMessage() {
-        String name = "Skibidi";
+        String name = "skibidi";
         System.out.println("Ohio skibidi on the wall, who's the skibidiest of 'em all?!!" +
                 "\nHello! I'm " + name + " the skibidiest of 'em all");
     }

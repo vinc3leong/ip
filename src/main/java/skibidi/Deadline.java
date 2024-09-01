@@ -1,4 +1,4 @@
-package Skibidi;
+package skibidi;
 
 public class Deadline extends Task {
     protected String by;
