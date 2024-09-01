@@ -2,6 +2,9 @@ package skibidi;
 
 import java.util.Scanner;
 
+/**
+ * Represents the user interface of the application.
+ */
 public class Ui {
     public Ui() {
     }

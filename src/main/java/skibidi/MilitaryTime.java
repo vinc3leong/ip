@@ -1,5 +1,8 @@
 package skibidi;
 
+/**
+ * Represents a time in 24-hour format.
+ */
 public class MilitaryTime {
     protected String time;
     public MilitaryTime(String time) throws SkibidiException {
@@ -17,6 +20,13 @@ public class MilitaryTime {
         int minute = Integer.parseInt(time.substring(2));
         return hour >= 0 && hour < 24 && minute >= 0 && minute < 60;
     }
+
+    /**
+     * Converts the time from 24-hour format to 12-hour format.
+     *
+     * @param time The time in 24-hour format.
+     * @return The time in 12-hour format.
+     */
     public String convertMilitaryTimeToStandardTime(String time) {
 
         int hour = Integer.parseInt(time.substring(0, 2));

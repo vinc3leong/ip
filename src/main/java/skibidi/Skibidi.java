@@ -4,7 +4,9 @@ import java.time.format.DateTimeParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
+/**
+ * Represents the main class of the Skibidi program.
+ */
 public class Skibidi {
 
     private static TaskList tasks = new TaskList();
@@ -22,6 +24,9 @@ public class Skibidi {
         }
     }
 
+    /**
+     * Runs the Skibidi program.
+     */
     public void run() {
         boolean isExit = false;
         while (!isExit) {

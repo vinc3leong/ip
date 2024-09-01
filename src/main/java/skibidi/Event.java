@@ -1,5 +1,8 @@
 package skibidi;
 
+/**
+ * Represents an event task.
+ */
 public class Event extends Task {
     protected String from;
     protected String to;
