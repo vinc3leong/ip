@@ -32,6 +32,8 @@ public class Parser {
                 return new MarkCommand(words);
             case "unmark":
                 return new UnmarkCommand(words);
+            case "find":
+                return new FindCommand(words);
             default:
                 return new InvalidCommand();
         }

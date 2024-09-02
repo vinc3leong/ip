@@ -20,7 +20,6 @@ abstract class Command {
      */
     public abstract void execute(Storage storage, TaskList taskList) throws IOException, SkibidiException;
 
-
     /**
      * Returns true if the command is an exit command.
      *
