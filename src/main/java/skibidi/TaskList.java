@@ -49,6 +49,16 @@ public class TaskList {
     public Task getTask(int index) {
         return tasks.get(index);
     }
+
+    public TaskList findTask(String keyword) {
+        TaskList foundTasks = new TaskList();
+        for (Task task : tasks) {
+            if (task.toString().contains(task.toAlternateCaps(keyword))) {
+                foundTasks.addTask(task);
+            }
+        }
+        return foundTasks;
+    }
     
     public void markTaskAsDone(int index) {
         tasks.get(index).markAsDone();
