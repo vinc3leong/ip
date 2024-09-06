@@ -1,15 +1,29 @@
-package skibidi;
+package skibidi.command;
 
+import skibidi.exceptions.SkibidiException;
+import skibidi.utils.Storage;
+import skibidi.utils.TaskList;
+import skibidi.utils.Ui;
+
+/**
+ * Represents a command to mark a task as not done.
+ */
 public class UnmarkCommand extends Command {
     public static final String COMMAND_WORD = "unmark";
 
-    public int index;
+    private int index;
 
+    /**
+     * Creates an unmark command.
+     *
+     * @param input Array of input strings
+     * @throws SkibidiException If the input is invalid
+     */
     public UnmarkCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
         if (input.length == 1) {
-            throw new SkibidiException("Error: unmark index must not be empty. " +
-                    "\nTo unmark a task as not done, use the format: unmark <index>");
+            throw new SkibidiException("Error: unmark index must not be empty. "
+                    + "\nTo unmark a task as not done, use the format: unmark <index>");
         } else {
             this.index = Integer.parseInt(input[1]) - 1;
         }

@@ -1,5 +1,12 @@
-package skibidi;
+package skibidi.command;
 
+import skibidi.utils.Storage;
+import skibidi.utils.TaskList;
+import skibidi.utils.Ui;
+
+/**
+ * Represents an exit command.
+ */
 public class ExitCommand extends Command {
 
     public static final String COMMAND_WORD = "bye";

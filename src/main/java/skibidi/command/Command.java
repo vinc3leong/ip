@@ -1,11 +1,16 @@
-package skibidi;
+package skibidi.command;
 
 import java.io.IOException;
+
+import skibidi.exceptions.SkibidiException;
+import skibidi.utils.Storage;
+import skibidi.utils.TaskList;
+
 
 /**
  * Represents a command.
  */
-abstract class Command {
+public abstract class Command {
 
     public Command(String command) {
     }

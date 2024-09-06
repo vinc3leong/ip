@@ -1,4 +1,4 @@
-package skibidi;
+package skibidi.task;
 
 /**
  * Represents a task in the task list.
@@ -48,11 +48,20 @@ public class Task {
         }
     }
 
+    /**
+     * Writes the task to the file.
+     *
+     * @return The task in the file format.
+     */
     public String writeToFile() {
         if (isDone) {
             return "1 | " + description;
         } else {
             return "0 | " + description;
         }
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

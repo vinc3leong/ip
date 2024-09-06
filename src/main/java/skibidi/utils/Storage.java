@@ -1,11 +1,14 @@
-package skibidi;
+package skibidi.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.Scanner;
+
+import skibidi.exceptions.SkibidiException;
+import skibidi.task.Task;
+
 
 /**
  * Represents a storage.
@@ -21,7 +24,7 @@ public class Storage {
      * Saves the task list to the file.
      *
      * @param taskList The task list to be saved.
-     * @throws IOException If an I/O error occurs.
+     * @throws IOException If an error occurs while saving the task list.
      */
     public void save(TaskList taskList) throws IOException {
         FileWriter fw = new FileWriter(filePath);
@@ -35,10 +38,11 @@ public class Storage {
      * Loads the task list from the file.
      *
      * @return The task list loaded from the file.
+     * @throws SkibidiException If an error occurs while loading the task list.
      * @throws FileNotFoundException If the file is not found.
-     * @throws SkibidiException If an error occurs while parsing the file.
      */
-    public TaskList load() throws FileNotFoundException, SkibidiException {
+    public TaskList load() throws SkibidiException, FileNotFoundException {
+
         TaskList taskList = new TaskList();
         File f = new File(filePath);
         Scanner s = new Scanner(f);
@@ -49,5 +53,7 @@ public class Storage {
         }
         Ui.printList(taskList);
         return taskList;
+
+
     }
 }
