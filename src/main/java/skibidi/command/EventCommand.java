@@ -1,12 +1,21 @@
-package skibidi;
+package skibidi.command;
 
 import java.io.IOException;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import java.util.Arrays;
 
+import skibidi.exceptions.SkibidiException;
+import skibidi.task.Event;
+import skibidi.task.Task;
+import skibidi.utils.MilitaryTime;
+import skibidi.utils.Storage;
+import skibidi.utils.TaskList;
+import skibidi.utils.Ui;
+
+/**
+ * Represents an event command.
+ */
 public class EventCommand extends Command {
 
     public static final String COMMAND_WORD = "event";
@@ -16,17 +25,25 @@ public class EventCommand extends Command {
     private final MilitaryTime startTime;
     private final MilitaryTime endTime;
 
+    /**
+     * Creates an event command.
+     *
+     * @param input Array of input strings
+     * @throws SkibidiException If the input is invalid
+     */
     public EventCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
         if (input.length < 8) {
-            throw new SkibidiException("Error: event description must not be empty. " +
-                    "\nTo add an event task, use the format: event <description> /from <date> <time> /to <date> <time>");
+            throw new SkibidiException("Error: event description must not be empty. "
+                    + "\nTo add an event task, "
+                    + "use the format: event <description> /from <date> <time> /to <date> <time>");
         }
 
-        if (Arrays.stream(input).noneMatch(s -> s.equals("/from")) ||
-                Arrays.stream(input).noneMatch(s -> s.equals("/to"))) {
-            throw new SkibidiException("Error: event description must not be empty. " +
-                    "\nTo add an event task, use the format: event <description> /from <date> <time> /to <date> <time>");
+        if (Arrays.stream(input).noneMatch(s -> s.equals("/from"))
+                || Arrays.stream(input).noneMatch(s -> s.equals("/to"))) {
+            throw new SkibidiException("Error: event description must not be empty. "
+                    + "\nTo add an event task, "
+                    + "use the format: event <description> /from <date> <time> /to <date> <time>");
         }
 
         int startFromIndex = Arrays.asList(input).indexOf("/from") + 1;

@@ -1,4 +1,9 @@
-package skibidi;
+package skibidi.command;
+
+import skibidi.exceptions.SkibidiException;
+import skibidi.utils.Storage;
+import skibidi.utils.TaskList;
+import skibidi.utils.Ui;
 
 /**
  * Represents a command to find tasks in the task list.
@@ -6,13 +11,19 @@ package skibidi;
 public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
-    public String keyword;
+    private String keyword;
 
+    /**
+     * Creates a find command.
+     *
+     * @param input Array of input strings
+     * @throws SkibidiException If the input is invalid
+     */
     public FindCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
         if (input.length == 1) {
-            throw new SkibidiException("Error: find keyword must not be empty. " +
-                    "\nTo find a task, use the format: find <keyword>");
+            throw new SkibidiException("Error: find keyword must not be empty. "
+                    + "\nTo find a task, use the format: find <keyword>");
         } else {
             this.keyword = everythingAfterCommand(input);
         }

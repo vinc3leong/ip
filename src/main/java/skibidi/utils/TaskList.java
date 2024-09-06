@@ -1,6 +1,9 @@
-package skibidi;
+package skibidi.utils;
 
 import java.util.ArrayList;
+
+import skibidi.task.Task;
+
 
 /**
  * Represents a list of tasks.
@@ -50,10 +53,15 @@ public class TaskList {
         return tasks.get(index);
     }
 
+    /**
+     * Returns the list of tasks.
+     *
+     * @return List of tasks.
+     */
     public TaskList findTask(String keyword) {
         TaskList foundTasks = new TaskList();
         for (Task task : tasks) {
-            if (task.toString().contains(task.toAlternateCaps(keyword))) {
+            if (task.getDescription().contains(keyword)) {
                 foundTasks.addTask(task);
             }
         }

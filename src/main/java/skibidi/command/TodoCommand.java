@@ -1,15 +1,31 @@
-package skibidi;
+package skibidi.command;
 
 import java.io.IOException;
 
+import skibidi.exceptions.SkibidiException;
+import skibidi.task.Task;
+import skibidi.task.Todo;
+import skibidi.utils.Storage;
+import skibidi.utils.TaskList;
+import skibidi.utils.Ui;
+
+/**
+ * Represents a todo command.
+ */
 public class TodoCommand extends Command {
     public static final String COMMAND_WORD = "todo";
     private final String description;
+    /**
+     * Creates a todo command.
+     *
+     * @param input Array of input strings
+     * @throws SkibidiException If the input is invalid
+     */
     public TodoCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
         if (input.length < 2) {
-            throw new SkibidiException("Error: todo description must not be empty. " +
-                    "\nTo add a todo task, use the format: todo <description>");
+            throw new SkibidiException("Error: todo description must not be empty. "
+                    + "\nTo add a todo task, use the format: todo <description>");
         } else {
             this.description = everythingAfterCommand(input);
         }

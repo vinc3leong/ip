@@ -1,9 +1,16 @@
-package skibidi;
+package skibidi.main;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import java.time.format.DateTimeParseException;
+
+import skibidi.command.Command;
+import skibidi.exceptions.SkibidiException;
+import skibidi.utils.Parser;
+import skibidi.utils.Storage;
+import skibidi.utils.TaskList;
+import skibidi.utils.Ui;
+
 
 
 /**
@@ -14,8 +21,13 @@ public class Skibidi {
     private static TaskList tasks = new TaskList();
     private Storage storage;
 
+    /**
+     * Creates a Skibidi program.
+     *
+     * @param filePath File path of the storage file
+     */
     public Skibidi(String filePath) {
-         storage = new Storage(filePath);
+        storage = new Storage(filePath);
         try {
             Ui.printWelcomeMessage();
             tasks = storage.load();
