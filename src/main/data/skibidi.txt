@@ -4,3 +4,5 @@ T | 0 | play
 T | 0 | eat rice
 D | 0 | description | 2022-12-23 | 5:00 PM
 D | 0 | smtg | Dec 23 2022 | 5:00 PM
+T | 0 | have lunch
+D | 0 | cs2109s | Sep 14 2024 | 11:59 PM
