@@ -1,9 +1,11 @@
 package skibidi.command;
 
+import java.io.IOException;
+
 import skibidi.exceptions.SkibidiException;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
+
 
 /**
  * Represents a command to mark a task as not done.
@@ -30,11 +32,12 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) {
+    public String execute(Storage storage, TaskList taskList) throws IOException {
         if (index < 0 || index > taskList.size()) {
-            Ui.printInvalidIndex();
+            return "Error: Invalid index. Please enter a valid index.";
         }
-        taskList.unmarkTaskAsDone(index );
-        Ui.printMarkAsUndone(taskList.getTask(index ));
+        taskList.unmarkTaskAsDone(index);
+        storage.save(taskList);
+        return "Got it. Un-yapped this task as not done:\n" + taskList.getTask(index).toString();
     }
 }

@@ -67,12 +67,23 @@ public class TaskList {
         }
         return foundTasks;
     }
-    
     public void markTaskAsDone(int index) {
         tasks.get(index).markAsDone();
     }
-
     public void unmarkTaskAsDone(int index) {
         tasks.get(index).markAsNotDone();
     }
+    /**
+     * Returns the list of tasks.
+     *
+     * @return List of tasks.
+     */
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < tasks.size(); i++) {
+            result.append((i + 1)).append(". ").append(tasks.get(i).toString()).append("\n");
+        }
+        return result.toString();
+    }
 }
+

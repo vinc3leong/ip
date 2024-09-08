@@ -2,7 +2,6 @@ package skibidi.command;
 
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
 
 /**
  * Represents an invalid command.
@@ -15,7 +14,7 @@ public class InvalidCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) {
-        Ui.printInvalidCommand();
+    public String execute(Storage storage, TaskList taskList) {
+        return "No rizz, no clue what you're yapping about :-(";
     }
 }
