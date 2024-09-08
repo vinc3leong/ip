@@ -2,7 +2,6 @@ package skibidi.command;
 
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
 
 /**
  * Represents an exit command.
@@ -15,8 +14,8 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) {
-        Ui.printGoodbyeMessage();
+    public String execute(Storage storage, TaskList taskList) {
+        return "Peace out. Hope to catch you yapping in SkibidiVille again soon!";
     }
 
     @Override

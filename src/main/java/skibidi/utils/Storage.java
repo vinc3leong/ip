@@ -51,9 +51,6 @@ public class Storage {
             Task task = Parser.parseTask(line);
             taskList.addTask(task);
         }
-        Ui.printList(taskList);
         return taskList;
-
-
     }
 }

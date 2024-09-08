@@ -15,7 +15,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) {
-        Ui.printList(taskList);
+    public String execute(Storage storage, TaskList taskList) {
+        return "Here are all your available goon quests:\n" + taskList.toString();
     }
 }

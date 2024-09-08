@@ -23,7 +23,7 @@ public abstract class Command {
      * @throws IOException If an error occurs when saving or loading tasks
      * @throws SkibidiException If an error occurs in Skibidi
      */
-    public abstract void execute(Storage storage, TaskList taskList) throws IOException, SkibidiException;
+    public abstract String execute(Storage storage, TaskList taskList) throws IOException, SkibidiException;
 
     /**
      * Returns true if the command is an exit command.

@@ -11,7 +11,6 @@ import skibidi.task.Task;
 import skibidi.utils.MilitaryTime;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
 
 /**
  * Represents an event command.
@@ -53,19 +52,29 @@ public class EventCommand extends Command {
         LocalDate endsAt = LocalDate.parse(input[endsAtIndex]);
         String formattedEndsAt = endsAt.format(DateTimeFormatter.ofPattern("MM dd yyyy"));
 
-        this.description = input[1];
+        this.description = everythingAfterCommand(input);
         this.from = formattedStartFrom;
         this.to = formattedEndsAt;
         this.startTime = new MilitaryTime(input[startFromIndex + 1]);
         this.endTime = new MilitaryTime(input[endsAtIndex + 1]);
-
     }
 
+    private String everythingAfterCommand(String[] input) {
+        StringBuilder description = new StringBuilder();
+        for (int i = 1; i < input.length; i++) {
+            if (input[i].equals("/from")) {
+                break;
+            }
+            description.append(input[i]).append(" ");
+        }
+        return description.toString().trim();
+    }
     @Override
-    public void execute(Storage storage, TaskList taskList) throws IOException {
+    public String execute(Storage storage, TaskList taskList) throws IOException {
         Task task = new Event(description, from, startTime, to, endTime);
         taskList.addTask(task);
-        Ui.printAdd(task, taskList);
         storage.save(taskList);
+        return "Got it. I added this to the goon quest:\n" + task + "\nNow you have " + taskList.size()
+                + " quests in the list.";
     }
 }

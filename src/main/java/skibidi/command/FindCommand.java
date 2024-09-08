@@ -3,7 +3,6 @@ package skibidi.command;
 import skibidi.exceptions.SkibidiException;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
 
 /**
  * Represents a command to find tasks in the task list.
@@ -38,9 +37,9 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) {
+    public String execute(Storage storage, TaskList taskList) {
         TaskList matchingTasks = taskList.findTask(keyword);
-        Ui.printFoundTasks(matchingTasks);
+        return "Here are the mogging tasks in your list:\n" + matchingTasks.toString();
     }
 
 }

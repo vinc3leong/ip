@@ -1,9 +1,11 @@
 package skibidi.command;
 
+import java.io.IOException;
+
 import skibidi.exceptions.SkibidiException;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
+
 
 /**
  * Represents a command to mark a task as done.
@@ -29,11 +31,12 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) {
+    public String execute(Storage storage, TaskList taskList) throws IOException {
         if (index < 0 || index > taskList.size()) {
-            Ui.printInvalidIndex();
+            return "Error: Invalid index. Please enter a valid index.";
         }
-        taskList.markTaskAsDone(index );
-        Ui.printMarkAsDone(taskList.getTask(index ));
+        taskList.markTaskAsDone(index);
+        storage.save(taskList);
+        return "Skibidi! This task is gooned:\n" + taskList.getTask(index).toString();
     }
 }

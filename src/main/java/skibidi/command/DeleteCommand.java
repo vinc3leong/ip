@@ -6,7 +6,6 @@ import skibidi.exceptions.SkibidiException;
 import skibidi.task.Task;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
 
 /**
  * Represents a delete command.
@@ -38,9 +37,10 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) throws IOException {
+    public String execute(Storage storage, TaskList taskList) throws IOException {
         Task task = taskList.deleteTask(index);
-        Ui.printDelete(task, taskList);
         storage.save(taskList);
+        return "Gyatt. I've yeeted this goon quest:\n" + task + "\nNow you have " + taskList.size()
+                + " quests in the list.";
     }
 }

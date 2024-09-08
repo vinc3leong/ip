@@ -12,8 +12,6 @@ import skibidi.task.Task;
 import skibidi.utils.MilitaryTime;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
-
 /**
  * Represents a deadline command.
  */
@@ -75,10 +73,12 @@ public class DeadlineCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList taskList) throws IOException {
+    public String execute(Storage storage, TaskList taskList) throws IOException {
         Task task = new Deadline(description, by, time);
         taskList.addTask(task);
-        Ui.printAdd(task, taskList);
         storage.save(taskList);
+        return "Got it. I added this to the goon quest:\n"
+                + "  " + task + "\n"
+                + "Now you have " + taskList.size() + " quests in the list.";
     }
 }

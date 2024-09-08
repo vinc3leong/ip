@@ -7,7 +7,6 @@ import skibidi.task.Task;
 import skibidi.task.Todo;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
-import skibidi.utils.Ui;
 
 /**
  * Represents a todo command.
@@ -39,10 +38,11 @@ public class TodoCommand extends Command {
         return description.toString().trim();
     }
     @Override
-    public void execute(Storage storage, TaskList taskList) throws IOException {
+    public String execute(Storage storage, TaskList taskList) throws IOException {
         Task task = new Todo(description);
         taskList.addTask(task);
-        Ui.printAdd(task, taskList);
         storage.save(taskList);
+        return "Got it. I added this to the goon quest: \n" + task
+                + "\nNow you have " + taskList.size() + " quests in the list.";
     }
 }
