@@ -23,11 +23,19 @@ public class UnmarkCommand extends Command {
      */
     public UnmarkCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
+        validateInput(input);
+        this.index = Integer.parseInt(input[1]) - 1;
+    }
+    /**
+     * Validates the input.
+     *
+     * @param input Array of input strings
+     * @throws SkibidiException If the input is invalid
+     */
+    public void validateInput(String[] input) throws SkibidiException {
         if (input.length == 1) {
             throw new SkibidiException("Error: unmark index must not be empty. "
                     + "\nTo unmark a task as not done, use the format: unmark <index>");
-        } else {
-            this.index = Integer.parseInt(input[1]) - 1;
         }
     }
 

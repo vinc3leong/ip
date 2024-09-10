@@ -17,7 +17,6 @@ public class ExitCommand extends Command {
     public String execute(Storage storage, TaskList taskList) {
         return "Peace out. Hope to catch you yapping in SkibidiVille again soon!";
     }
-
     @Override
     public boolean isExit() {
         return true;

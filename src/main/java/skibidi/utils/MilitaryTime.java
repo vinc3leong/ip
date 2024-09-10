@@ -31,7 +31,9 @@ public class MilitaryTime {
         }
         int hour = Integer.parseInt(time.substring(0, 2));
         int minute = Integer.parseInt(time.substring(2));
-        return hour >= 0 && hour < 24 && minute >= 0 && minute < 60;
+        boolean isHourValid = hour >= 0 && hour < 24;
+        boolean isMinuteValid = minute >= 0 && minute < 60;
+        return isHourValid && isMinuteValid;
     }
 
     /**
@@ -41,7 +43,6 @@ public class MilitaryTime {
      * @return The time in 12-hour format.
      */
     public String convertMilitaryTimeToStandardTime(String time) {
-
         int hour = Integer.parseInt(time.substring(0, 2));
         int minute = Integer.parseInt(time.substring(2));
         String period = "AM";

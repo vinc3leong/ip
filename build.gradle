@@ -48,7 +48,7 @@ test {
 }
 
 application {
-    mainClass.set("skibidi.gui.Launcher")
+    mainClass.set("skibidi.main.Launcher")
 }
 
 shadowJar {

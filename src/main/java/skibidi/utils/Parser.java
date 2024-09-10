@@ -58,7 +58,7 @@ public class Parser {
     }
 
     /**
-     * Parses the task and returns the corresponding task.
+     * Parses the task taken from the storage file and returns the corresponding task.
      *
      * @param task The task to be parsed.
      * @return The corresponding task.
@@ -69,43 +69,70 @@ public class Parser {
         String taskType = words[0];
         switch (taskType) {
         case "T":
-            boolean isDone = words[1].equals("1");
-            String description = words[2];
-            Todo todo = new Todo(description);
-            if (isDone) {
-                todo.markAsDone();
-                return todo;
-            } else {
-                return todo;
-            }
+            return parseTodoTask(words);
         case "D":
-            isDone = words[1].equals("1");
-            description = words[2];
-            String by = words[3];
-            MilitaryTime time = new MilitaryTime(TimeUtil.convertStandardToMilitary(words[4]));
-            Deadline deadline = new Deadline(description, by, time);
-            if (isDone) {
-                deadline.markAsDone();
-                return deadline;
-            } else {
-                return deadline;
-            }
+            return parseDeadlineTask(words);
         case "E":
-            isDone = words[1].equals("1");
-            description = words[2];
-            String from = words[3];
-            MilitaryTime startTime = new MilitaryTime(TimeUtil.convertStandardToMilitary(words[4]));
-            String to = words[5];
-            MilitaryTime endTime = new MilitaryTime(TimeUtil.convertStandardToMilitary(words[4]));
-            Event event = new Event(description, from, startTime, to, endTime);
-            if (isDone) {
-                event.markAsDone();
-                return event;
-            } else {
-                return event;
-            }
+            return parseEventTask(words);
         default:
             throw new SkibidiException("Error: Invalid task type detected in file.");
+        }
+    }
+    /**
+     * Parses Todo task taken from the storage file and returns a Todo task.
+     *
+     * @param words The task to be parsed.
+     * @return Todo task.
+     */
+    public static Task parseTodoTask(String[] words) {
+        String description = words[2];
+        boolean isDone = words[1].equals("1");
+        Todo todo = new Todo(description);
+        if (isDone) {
+            todo.markAsDone();
+            return todo;
+        } else {
+            return todo;
+        }
+    }
+    /**
+     * Parses Deadline task taken from the storage file and returns a Deadline task.
+     *
+     * @param words The task to be parsed.
+     * @return Deadline task.
+     */
+    public static Task parseDeadlineTask(String[] words) throws SkibidiException {
+        String description = words[2];
+        String by = words[3];
+        MilitaryTime time = new MilitaryTime(TimeUtil.convertStandardToMilitary(words[4]));
+        boolean isDone = words[1].equals("1");
+        Deadline deadline = new Deadline(description, by, time);
+        if (isDone) {
+            deadline.markAsDone();
+            return deadline;
+        } else {
+            return deadline;
+        }
+    }
+    /**
+     * Parses Event task taken from the storage file and returns an Event task.
+     *
+     * @param words The task to be parsed.
+     * @return Event task.
+     */
+    public static Task parseEventTask(String[] words) throws SkibidiException {
+        String description = words[2];
+        String from = words[3];
+        MilitaryTime startTime = new MilitaryTime(TimeUtil.convertStandardToMilitary(words[4]));
+        String to = words[5];
+        MilitaryTime endTime = new MilitaryTime(TimeUtil.convertStandardToMilitary(words[6]));
+        boolean isDone = words[1].equals("1");
+        Event event = new Event(description, from, startTime, to, endTime);
+        if (isDone) {
+            event.markAsDone();
+            return event;
+        } else {
+            return event;
         }
     }
 }

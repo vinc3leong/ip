@@ -1,6 +1,7 @@
-package skibidi.gui;
+package skibidi.main;
 
 import javafx.application.Application;
+
 
 /**
  * A launcher class to workaround classpath issues.

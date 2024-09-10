@@ -1,4 +1,4 @@
-package skibidi.gui;
+package skibidi.main;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import skibidi.main.Skibidi;
+import skibidi.gui.MainWindow;
 
 /**
  * A GUI for Duke using FXML.

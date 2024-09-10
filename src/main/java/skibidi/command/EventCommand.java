@@ -48,9 +48,9 @@ public class EventCommand extends Command {
         int startFromIndex = Arrays.asList(input).indexOf("/from") + 1;
         int endsAtIndex = Arrays.asList(input).indexOf("/to") + 1;
         LocalDate startFrom = LocalDate.parse(input[startFromIndex]);
-        String formattedStartFrom = startFrom.format(DateTimeFormatter.ofPattern("MM dd yyyy"));
+        String formattedStartFrom = startFrom.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
         LocalDate endsAt = LocalDate.parse(input[endsAtIndex]);
-        String formattedEndsAt = endsAt.format(DateTimeFormatter.ofPattern("MM dd yyyy"));
+        String formattedEndsAt = endsAt.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
 
         this.description = everythingAfterCommand(input);
         this.from = formattedStartFrom;

@@ -29,6 +29,28 @@ public class DeadlineCommand extends Command {
      */
     public DeadlineCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
+        validateInput(input);
+        try {
+            int timeIndex = Arrays.asList(input).indexOf("/by") + 2;
+            String formattedDeadline = formatDeadline(input);
+            MilitaryTime time = new MilitaryTime(input[timeIndex]);
+
+            this.description = everythingAfterCommand(input);
+            this.by = formattedDeadline;
+            this.time = time;
+        } catch (DateTimeParseException e) {
+            throw new SkibidiException("Error: To add a deadline task, use the format: "
+                    + "deadline <description> /by <date> <time>"
+                    + " where <date> is in the format yyyy-mm-dd and <time> is in the format HHmm.");
+        }
+    }
+    /**
+     * Validates the input.
+     *
+     * @param input Array of input strings
+     * @throws SkibidiException If the input is invalid
+     */
+    public void validateInput(String[] input) throws SkibidiException {
         if (input.length < 5) { // Check if the input is empty
             throw new SkibidiException("Error: deadline description must not be empty. "
                     + "\nTo add a deadline task, use the format: deadline <description> /by <date> <time>"
@@ -41,24 +63,18 @@ public class DeadlineCommand extends Command {
                     + "deadline <description> /by <date> <time>"
                     + " where <date> is in the format yyyy-mm-dd and <time> is in the format HHmm.");
         }
-
-        try {
-            int dateIndex = Arrays.asList(input).indexOf("/by") + 1;
-            int timeIndex = Arrays.asList(input).indexOf("/by") + 2;
-            LocalDate deadline = LocalDate.parse(input[dateIndex]);
-            String formattedDeadline = deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
-            MilitaryTime time = new MilitaryTime(input[timeIndex]);
-
-            this.description = everythingAfterCommand(input);
-            this.by = formattedDeadline;
-            this.time = time;
-        } catch (DateTimeParseException e) {
-            throw new SkibidiException("Error: To add a deadline task, use the format: "
-                    + "deadline <description> /by <date> <time>"
-                    + " where <date> is in the format yyyy-mm-dd and <time> is in the format HHmm.");
-        }
-
-
+    }
+    /**
+     * Formats the deadline.
+     *
+     * @param input Array of input strings
+     * @return The formatted deadline
+     */
+    public String formatDeadline(String[] input) {
+        int dateIndex = Arrays.asList(input).indexOf("/by") + 1;
+        LocalDate deadline = LocalDate.parse(input[dateIndex]);
+        String formattedDeadline = deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        return formattedDeadline;
     }
 
     private String everythingAfterCommand(String[] input) {
