@@ -29,6 +29,9 @@ public class DeadlineCommand extends Command {
      */
     public DeadlineCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
+        assert input != null : "Input array should not be null";
+        assert input.length >= 5 : "Input array should have at least 5 elements";
+
         if (input.length < 5) { // Check if the input is empty
             throw new SkibidiException("Error: deadline description must not be empty. "
                     + "\nTo add a deadline task, use the format: deadline <description> /by <date> <time>"

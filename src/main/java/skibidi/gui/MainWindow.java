@@ -52,7 +52,11 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
+        assert input != null && !input.trim().isEmpty() : "User input should not be null or empty";
+
         String response = skibidi.getResponse(input);
+        assert response != null && !response.trim().isEmpty() : "Response should not be null or empty";
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getSkibidiDialog(response, skibidiImage)
