@@ -20,11 +20,20 @@ public class FindCommand extends Command {
      */
     public FindCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
+        validateInput(input);
+        this.keyword = everythingAfterCommand(input);
+    }
+
+    /**
+     * Validates the input.
+     *
+     * @param input Array of input strings
+     * @throws SkibidiException If the input is invalid
+     */
+    public void validateInput(String[] input) throws SkibidiException {
         if (input.length == 1) {
             throw new SkibidiException("Error: find keyword must not be empty. "
                     + "\nTo find a task, use the format: find <keyword>");
-        } else {
-            this.keyword = everythingAfterCommand(input);
         }
     }
 
@@ -39,7 +48,11 @@ public class FindCommand extends Command {
     @Override
     public String execute(Storage storage, TaskList taskList) {
         TaskList matchingTasks = taskList.findTask(keyword);
-        return "Here are the mogging tasks in your list:\n" + matchingTasks.toString();
+        if (matchingTasks.size() == 0) {
+            return "Minus aura. Zero mogging tasks found.";
+        } else {
+            return "Here are the mogging tasks in your list:\n" + matchingTasks;
+        }
     }
 
 }

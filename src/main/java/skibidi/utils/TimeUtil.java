@@ -23,8 +23,6 @@ public class TimeUtil {
         } else if (period.equalsIgnoreCase("AM") && hour == 12) {
             hour = 0;
         }
-
         return String.format("%02d%02d", hour, minute);
-
     }
 }

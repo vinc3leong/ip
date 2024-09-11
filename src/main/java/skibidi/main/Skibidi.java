@@ -11,8 +11,6 @@ import skibidi.utils.Parser;
 import skibidi.utils.Storage;
 import skibidi.utils.TaskList;
 
-
-
 /**
  * Represents the main class of the Skibidi program.
  */
@@ -41,7 +39,7 @@ public class Skibidi {
             tasks = storage.load();
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = Parser.parseTask(tasks.getTask(i).writeToFile());
-                sb.append(task.toString()).append("\n");
+                sb.append(task).append("\n");
             }
             return sb.toString();
         } catch (FileNotFoundException e) {
