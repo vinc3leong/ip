@@ -14,6 +14,7 @@ import skibidi.task.Task;
  * Represents a storage.
  */
 public class Storage {
+    private static final String ARCHIVE = "src/main/data/archive.txt";
     private String filePath;
 
     public Storage(String filePath) {
@@ -35,6 +36,19 @@ public class Storage {
     }
 
     /**
+     * Archives the task list to the archive file.
+     *
+     * @param taskList The task list to be archived.
+     * @throws IOException If an error occurs while archiving the task list.
+     */
+    public void archive(TaskList taskList) throws IOException {
+        FileWriter fw = new FileWriter(ARCHIVE);
+        for (int i = 0; i < taskList.size(); i++) {
+            fw.write(taskList.getTask(i).writeToFile() + "\n");
+        }
+        fw.close();
+    }
+    /**
      * Loads the task list from the file.
      *
      * @return The task list loaded from the file.
@@ -52,5 +66,23 @@ public class Storage {
             taskList.addTask(task);
         }
         return taskList;
+    }
+    /**
+     * Loads the archive list from the archive file.
+     *
+     * @return The archive list loaded from the archive file.
+     * @throws SkibidiException If an error occurs while loading the archive list.
+     * @throws FileNotFoundException If the archive file is not found.
+     */
+    public TaskList loadArchive() throws SkibidiException, FileNotFoundException {
+        TaskList archiveList = new TaskList();
+        File f = new File(ARCHIVE);
+        Scanner s = new Scanner(f);
+        while (s.hasNext()) {
+            String line = s.nextLine();
+            Task task = Parser.parseTask(line);
+            archiveList.addTask(task);
+        }
+        return archiveList;
     }
 }
