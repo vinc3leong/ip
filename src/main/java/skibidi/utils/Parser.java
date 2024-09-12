@@ -1,6 +1,6 @@
 package skibidi.utils;
 
-
+import skibidi.command.ArchiveCommand;
 import skibidi.command.Command;
 import skibidi.command.DeadlineCommand;
 import skibidi.command.DeleteCommand;
@@ -52,6 +52,8 @@ public class Parser {
             return new UnmarkCommand(words);
         case "find":
             return new FindCommand(words);
+        case "archive":
+            return new ArchiveCommand(words);
         default:
             return new InvalidCommand();
         }

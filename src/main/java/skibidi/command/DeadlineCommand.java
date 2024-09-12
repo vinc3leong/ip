@@ -29,26 +29,10 @@ public class DeadlineCommand extends Command {
      */
     public DeadlineCommand(String[] input) throws SkibidiException {
         super(COMMAND_WORD);
-<<<<<<< branch-A-CodeQuality
         validateInput(input);
-=======
         assert input != null : "Input array should not be null";
         assert input.length >= 5 : "Input array should have at least 5 elements";
 
-        if (input.length < 5) { // Check if the input is empty
-            throw new SkibidiException("Error: deadline description must not be empty. "
-                    + "\nTo add a deadline task, use the format: deadline <description> /by <date> <time>"
-                    + " where <date> is in the format yyyy-mm-dd and <time> is in the format HHmm.");
-        }
-
-        if (Arrays.stream(input).noneMatch(s -> s.equals("/by"))) {
-            System.out.println(input[2]);
-            throw new SkibidiException("Error: To add a deadline task, use the format: "
-                    + "deadline <description> /by <date> <time>"
-                    + " where <date> is in the format yyyy-mm-dd and <time> is in the format HHmm.");
-        }
-
->>>>>>> master
         try {
             int timeIndex = Arrays.asList(input).indexOf("/by") + 2;
             String formattedDeadline = formatDeadline(input);

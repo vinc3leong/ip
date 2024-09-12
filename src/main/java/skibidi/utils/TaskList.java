@@ -85,5 +85,8 @@ public class TaskList {
         }
         return result.toString();
     }
+    public void clear() {
+        tasks.clear();
+    }
 }
 
