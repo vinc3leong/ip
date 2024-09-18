@@ -7,3 +7,5 @@ E | 0 | cs2103 tut | Sep 11 2024 | 2:00 PM | Sep 11 2024 | 3:00 PM
 D | 0 | gec1003 CA1 due next week | Sep 14 2024 | 11:59 PM
 T | 0 | cs2103 weekly task
 E | 0 | clb work | 09 14 2024 | 10:00 AM | 09 14 2024 | 1:00 PM
+E | 0 | M night | Sep 22 2024 | 11:00 AM | Sep 22 2024 | 11:00 PM
+T | 0 | gym

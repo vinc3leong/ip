@@ -40,7 +40,7 @@ public class MarkCommand extends Command {
 
     @Override
     public String execute(Storage storage, TaskList taskList) throws IOException {
-        if (index < 0 || index > taskList.size()) {
+        if (index < 0 || index >= taskList.size()) {
             return "Error: Invalid index. Please enter a valid index.";
         }
         taskList.markTaskAsDone(index);

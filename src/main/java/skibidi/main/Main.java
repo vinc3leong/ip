@@ -23,6 +23,7 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Skibidi");
             fxmlLoader.<MainWindow>getController().setSkibidi(skibidi);
             stage.show();
         } catch (IOException e) {
