@@ -1,3 +1,2 @@
-T | 0 | cs2103T iP
-D | 1 | gec1003 assignment | Sep 20 2024 | 11:59 PM
-T | 0 | cs2109s assignment
+T | 0 | sleep
+T | 0 | eat

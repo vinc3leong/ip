@@ -80,6 +80,11 @@ public class TaskList {
      */
     public String toString() {
         StringBuilder result = new StringBuilder();
+        if (tasks.size() == 0) {
+            return "You currently have zero goons to mog.";
+        } else {
+            result.append("Here are all your goon quests:\n");
+        }
         for (int i = 0; i < tasks.size(); i++) {
             result.append((i + 1)).append(". ").append(tasks.get(i).toString()).append("\n");
         }

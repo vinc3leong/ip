@@ -37,6 +37,11 @@ public class Skibidi {
         try {
             StringBuilder sb = new StringBuilder();
             tasks = storage.load();
+            if (tasks.size() == 0) {
+                return "You currently have zero goons to mog.";
+            } else {
+                sb.append("Here are all your goon quests:\n");
+            }
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = Parser.parseTask(tasks.getTask(i).writeToFile());
                 sb.append(task).append("\n");

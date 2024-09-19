@@ -36,6 +36,7 @@ public class Event extends Task {
 
     @Override
     public String writeToFile() {
-        return "E | " + super.writeToFile() + " | " + from + " | " + startTime.toString() + " | " + to + " | " + endTime.toString();
+        return "E | " + super.writeToFile() + " | " + from + " | "
+                + startTime.toString() + " | " + to + " | " + endTime.toString();
     }
 }

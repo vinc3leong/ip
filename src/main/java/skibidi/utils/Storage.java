@@ -42,6 +42,11 @@ public class Storage {
      * @throws IOException If an error occurs while archiving the task list.
      */
     public void archive(TaskList taskList) throws IOException {
+        File f = new File(ARCHIVE);
+        if (!f.exists()) {
+            f.getParentFile().mkdirs();
+            f.createNewFile();
+        }
         FileWriter fw = new FileWriter(ARCHIVE);
         for (int i = 0; i < taskList.size(); i++) {
             fw.write(taskList.getTask(i).writeToFile() + "\n");
@@ -56,9 +61,16 @@ public class Storage {
      * @throws FileNotFoundException If the file is not found.
      */
     public TaskList load() throws SkibidiException, FileNotFoundException {
-
         TaskList taskList = new TaskList();
         File f = new File(filePath);
+        if (!f.exists()) {
+            f.getParentFile().mkdirs();
+            try {
+                f.createNewFile();
+            } catch (IOException e) {
+                throw new SkibidiException("Error creating file: " + e.getMessage());
+            }
+        }
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String line = s.nextLine();
@@ -77,6 +89,14 @@ public class Storage {
     public TaskList loadArchive() throws SkibidiException, FileNotFoundException {
         TaskList archiveList = new TaskList();
         File f = new File(ARCHIVE);
+        if (!f.exists()) {
+            f.getParentFile().mkdirs();
+            try {
+                f.createNewFile();
+            } catch (IOException e) {
+                throw new SkibidiException("Error creating file: " + e.getMessage());
+            }
+        }
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String line = s.nextLine();

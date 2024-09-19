@@ -34,7 +34,7 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         String welcomeMessage = "Good day skibidi Ohio sigma! "
                 + "I am Skibidi, your personal task manager. What the dog doin'?"
-                + " How can I rizz up your day today? " + "\n" + "Here are all your available goon quests:" + "\n";
+                + " How can I rizz up your day today? " + "\n";
         String loadMessage = skibidi.loadTasks();
         dialogContainer.getChildren().add(DialogBox.getSkibidiDialog(welcomeMessage
                 + "\n" + loadMessage, skibidiImage));
