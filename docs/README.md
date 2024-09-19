@@ -10,7 +10,7 @@ Skibidi, the ultimate task manager chatbot, frees your mind from remembering the
 
 **How to Get Skibidi:**
 
-1. Download Skibidi from [here](https://nus-cs2103-ay2425s1.github.io/website/schedule/week4/project.html).
+1. Download Skibidi from [here](https://github.com/vinc3leong/ip/releases/tag/A-Release).
 2. Double-click to open (easy peasy).
 3. Add your tasks (Skibidi gets it done).
 4. Let Skibidi manage your life, fam. 😉
