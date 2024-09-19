@@ -27,7 +27,7 @@ And did we mention? It's **FREE**.
 ### Basic Commands
 
 1. **Adding Tasks**
-   - **`todo <task description>`**: Adds a basic task without a specific date.
+      - **`todo <task description>`**: Adds a basic task without a specific date.
          - Example: `todo Buy groceries`
       - **`deadline <task description> /by <date in yyyy-mm-dd format> <time in HHmm format>`**: Adds a task with a deadline.
          - Example: `deadline Submit assignment /by 2024-09-20 2359`
